@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>随堂作业 · 起始文件（表格与表单）</title>
+    <!-- 引入同目录的公用演示样式：只为让表格出现边框、表单排列清楚，方便核对结构 -->
+    <!-- 注意：这是第 8 章才学的 CSS，本章不要求掌握；你只改 HTML 结构部分即可 -->
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <!-- ============================================================
+     随堂作业起始文件（表格 + 表单）
+     ------------------------------------------------------------
+     用法：把本文件复制到你的网站文件夹，改名为 signup.html
+     （或直接在原文件上改），按 TODO 1 ~ TODO 12 依次完成。
+
+     说明：表格默认没有边框线是正常的 —— border 属性在 HTML5 中
+     已废弃，边框要用 CSS 加（第 8 章才学）。
+     本页为了让格子看得清，已用 <link> 引入 demo.css（记得把
+     demo.css 一起复制过去）；不引入也不影响结构对错判断。
+     ============================================================ -->
+
+    <h1>软件工程2班 · 班级主页</h1>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="news.html">班级新闻</a></li>
+        <li><a href="signup.html">信息采集</a></li>
+        <!-- TODO 1：加一项导航，指向本页 signup.html，文字写「信息采集」 -->
+      </ul>
+    </nav>
+
+    <hr />
+
+    <!-- ============================================================
+     任务一：本周课程表（表格）
+     ============================================================ -->
+
+    <h2>一、本周课程表</h2>
+
+    <!-- TODO 2：给 <table> 加 <caption>，内容写「软件工程2班 课程表」
+            （caption 必须是 table 的第一个子元素） -->
+    <table>
+      <caption>
+        软件工程2班 课程表
+      </caption>
+      <!-- TODO 3：把这一行表头用 <thead> 包起来，
+              并把里面的 <td> 全部改成 <th scope="col"> -->
+      <tr>
+        <thead>
+          <th scope="col">节次</th>
+          <th scope="col">星期一</th>
+          <th scope="col">星期二</th>
+          <th scope="col">星期三</th>
+          <th scope="col">星期四</th>
+        </thead>
+      </tr>
+
+      <!-- TODO 4：把下面两行数据用 <tbody> 包起来；
+              每行的第一个单元格（第12节/第34节）改成 <th scope="row"> -->
+      <tbody>
+        <tr>
+          <th scope="row">第12节</th>
+          <td>体育</td>
+          <td rowspan="2">数据结构</td>
+          <td>大学英语</td>
+          <td>Web编程基础</td>
+        </tr>
+        <tr>
+          <th scope="row">第34节</th>
+          <td>高等数学</td>
+          <td colspan="2">Web开发实验</td>
+        </tr>
+      </tbody>
+      <!-- TODO 5：合并单元格（两处都要做）
+              a) 把第一行数据里「数据结构」那个 td 改成跨两行：
+                 <td rowspan="2">数据结构</td>
+                 然后把第二行数据里对应的那个 <td>数据结构</td> 删掉
+              b) 把第二行数据里「Web开发实验」那个 td 改成跨两列：
+                 <td colspan="2">Web开发实验</td>
+                 然后把紧跟其后的 <td>自习</td> 删掉
+              ⚠ 数格子：表头 5 列 → 每行格子总数必须 = 5 -->
+
+      <!-- TODO 6：用 <tfoot> 加一行表尾，内容是「适用时间：2026~2027 学年第一学期」，
+              这一格要跨 5 列：<td colspan="5">……</td> -->
+      <tfoot>
+        <tr>
+          <td colspan="5">适用时间：2026~2027 学年第一学期</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- ============================================================
+     任务二：班级信息统计表（表格）
+     ============================================================ -->
+
+    <h2>二、班级信息统计</h2>
+
+    <!-- TODO 7：补全这张表，要求：
+              a) 有 <caption>：班级基本情况
+              b) 有 <thead>：三列表头 项目 / 人数 / 占比，用 <th scope="col">
+              c) 有 <tbody>：三行数据（总人数42 / 男生27 / 女生15 与对应占比），
+                 每行第一个格子用 <th scope="row">
+              d) 有 <tfoot>：一行说明，跨 3 列 -->
+    <table></table>
+
+    <!-- ============================================================
+     任务三：班级信息采集表单（表单）
+     ============================================================ -->
+
+    <h2>三、报名表单</h2>
+
+    <!-- TODO 8：method 已经写好，检查一下是不是 post；
+              action="#" 表示提交到当前页（课堂上不接后端，正常） -->
+    <form action="#" method="post">
+      <!-- ---------- 分组一：基本信息 ---------- -->
+      <fieldset>
+        <legend>基本信息</legend>
+
+        <!-- TODO 9：这一组要放 4 个控件，每个都要有 <label>
+               ① 姓名：<input type="text" name="name" required>
+               ② 学号：10 位数字 → pattern="[0-9]{10}"，加 placeholder="10 位数字"，required
+               ③ 邮箱：用 HTML5 新类型 type="email"，required
+               ④ 入学日期：用 type="date"
+               写法两种都行：
+                 <label for="s-name">姓名：</label><input id="s-name" ...>
+               或 <label>姓名：<input ...></label> -->
+        <label for="name">姓名：</label>
+        <input id="name" type="text" name="name" required />
+
+        <label for="student-id">学号：</label>
+        <input
+          id="student-id"
+          type="text"
+          name="student-id"
+          pattern="[0-9]{10}"
+          placeholder="10 位数字"
+          required
+        />
+
+        <label for="email">邮箱：</label>
+        <input id="email" type="email" name="email" required />
+
+        <label for="enrollment-date">入学日期：</label>
+        <input
+          id="enrollment-date"
+          type="date"
+          name="enrollment-date"
+          required
+        />
+      </fieldset>
+
+      <!-- ---------- 分组二：其他信息 ---------- -->
+      <fieldset>
+        <legend>其他信息</legend>
+
+        <!-- TODO 10：单选按钮（性别）
+                要求：两个 radio，name 必须相同才能互斥，其中一个加 checked -->
+
+        <!-- TODO 11：复选框（擅长方向）
+                要求：至少 3 个 checkbox，name 相同，value 各不相同 -->
+
+        <!-- TODO 12：下拉列表（班级）+ 多行文本 + 两个按钮
+                a) <select name="cls"> 里放 3 个 option，其中「软件工程2班」加 selected
+                b) <textarea name="msg" rows="3" cols="40"></textarea>
+                   注意：默认值写在标签内容里，不是 value 属性
+                c) 两个按钮，type 都要写：
+                   <button type="submit">提交报名</button>
+                   <button type="reset">重填</button> -->
+        <label for="gender">性别：</label>
+        <input type="radio" id="male" name="gender" value="male" checked />
+        <label for="male">男</label>
+        <input type="radio" id="female" name="gender" value="female" />
+        <label for="female">女</label>
+
+        <label for="skills">擅长方向：</label>
+        <input type="checkbox" id="frontend" name="skills" value="frontend" />
+        <label for="frontend">前端开发</label>
+        <input type="checkbox" id="backend" name="skills" value="backend" />
+        <label for="backend">后端开发</label>
+        <input type="checkbox" id="mobile" name="skills" value="mobile" />
+        <label for="mobile">移动开发</label>
+
+        <label for="cls">班级：</label>
+        <select id="cls" name="cls">
+          <option value="se1">软件工程1班</option>
+          <option value="se2" selected>软件工程2班</option>
+          <option value="se3">软件工程3班</option>
+        </select>
+
+        <label for="msg">留言：</label>
+        <textarea id="msg" name="msg" rows="3" cols="40"></textarea>
+
+        <button type="submit">提交报名</button>
+        <button type="reset">重填</button>
+      </fieldset>
+    </form>
+
+    <hr />
+
+    <p><a href="index.html">← 返回首页</a></p>
+  </body>
+</html>
